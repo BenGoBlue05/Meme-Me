@@ -11,6 +11,10 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UITextFieldDelegate {
 
     
+    @IBOutlet weak var topToolbar: UIToolbar!
+    
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var topTf: UITextField!
@@ -83,6 +87,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
        
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
+    }
+    
+    func generateMemedImage() -> UIImage {
+        // Hide toolbar and navbar
+        topToolbar.isHidden = true
+        bottomToolbar.isHidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        // TODO: Show toolbar and navbar
+        topToolbar.isHidden = false
+        bottomToolbar.isHidden = false
+        
+        return memedImage
+    }
+    
+    
+    @IBAction func shareMeme(_ sender: Any) {
+        let image = generateMemedImage()
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }
 

@@ -18,7 +18,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac7-gU-cxf">
                                 <rect key="frame" x="0.0" y="34" width="414" height="44"/>
                                 <items>
-                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="8qY-Op-KRC"/>
+                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="8qY-Op-KRC">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="IT0-fS-uqv"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Jed-My-Kqq"/>
                                     <barButtonItem title="Cancel" id="QOi-tI-cFJ"/>
                                 </items>
@@ -82,8 +86,10 @@
                     </view>
                     <connections>
                         <outlet property="bottomTf" destination="hix-qb-QVJ" id="8GF-Jh-3Ep"/>
+                        <outlet property="bottomToolbar" destination="CwG-EU-2rB" id="YOc-JZ-Wa8"/>
                         <outlet property="imageView" destination="i7k-EJ-aa6" id="ZNP-Iu-dbQ"/>
                         <outlet property="topTf" destination="kbP-Sm-ajz" id="iYg-ej-33d"/>
+                        <outlet property="topToolbar" destination="ac7-gU-cxf" id="hDS-XG-eWL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
