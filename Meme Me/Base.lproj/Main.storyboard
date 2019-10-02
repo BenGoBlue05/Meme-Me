@@ -81,7 +81,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomTf" destination="hix-qb-QVJ" id="8GF-Jh-3Ep"/>
                         <outlet property="imageView" destination="i7k-EJ-aa6" id="ZNP-Iu-dbQ"/>
+                        <outlet property="topTf" destination="kbP-Sm-ajz" id="iYg-ej-33d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
