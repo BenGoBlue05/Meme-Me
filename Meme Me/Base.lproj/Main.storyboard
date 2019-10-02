@@ -31,11 +31,15 @@
                                 <rect key="frame" x="6" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NwD-9X-kww"/>
-                                    <barButtonItem image="camera" catalog="system" id="vvA-9c-H99"/>
+                                    <barButtonItem image="camera" catalog="system" id="vvA-9c-H99">
+                                        <connections>
+                                            <action selector="getImageFromCamera:" destination="BYZ-38-t0r" id="1G3-nq-lxE"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gYH-aJ-Qhi"/>
                                     <barButtonItem title="Album" id="PqW-My-v9T">
                                         <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="jwx-sR-hf9"/>
+                                            <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" id="jwx-sR-hf9"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zLg-Ap-Hm8"/>
@@ -87,6 +91,7 @@
                     <connections>
                         <outlet property="bottomTf" destination="hix-qb-QVJ" id="8GF-Jh-3Ep"/>
                         <outlet property="bottomToolbar" destination="CwG-EU-2rB" id="YOc-JZ-Wa8"/>
+                        <outlet property="cameraButton" destination="vvA-9c-H99" id="GAx-TC-fZE"/>
                         <outlet property="imageView" destination="i7k-EJ-aa6" id="ZNP-Iu-dbQ"/>
                         <outlet property="topTf" destination="kbP-Sm-ajz" id="iYg-ej-33d"/>
                         <outlet property="topToolbar" destination="ac7-gU-cxf" id="hDS-XG-eWL"/>
