@@ -23,6 +23,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    private var isTopTextDefault = true
+
+    private var isBottomTextDefault = true
+    
+    private var bottomTfHasFocus = false
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
@@ -32,6 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTf.delegate = self
         bottomTf.delegate = self
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        shareButton.isEnabled = imageView.image != nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,6 +67,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if let iv = imageView {
                 iv.image = image
+                shareButton.isEnabled = true
             }
         }
         dismiss(animated: true)
@@ -71,17 +81,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillShow(_ notification: Notification){
-           view.frame.origin.y = -getKeyboardHeight(notification)
-       }
+        if bottomTfHasFocus {
+            view.frame.origin.y = -getKeyboardHeight(notification)
+        }
+    }
        
-       private func getKeyboardHeight(_ notification: Notification) -> CGFloat {
-           let userInfo = notification.userInfo
-              let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-              return keyboardSize.cgRectValue.height
-       }
+    private func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
        
-    
     @objc func keyboardWillHide(_ notification: Notification) {
+        bottomTfHasFocus = false
         view.frame.origin.y = 0
     }
 
@@ -90,6 +102,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if topTf.tag  == textField.tag{
+            if isTopTextDefault {
+                isTopTextDefault = false
+                textField.text = ""
+            }
+        } else if bottomTf.tag == textField.tag {
+            if isBottomTextDefault {
+                isBottomTextDefault = false
+                textField.text = ""
+            }
+            bottomTfHasFocus = true
+        }
+        return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -125,6 +153,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func resetMeme(_ sender: Any) {
+        imageView.image = nil
+        topTf.text = "TOP"
+        bottomTf.text = "BOTTOM"
+        isTopTextDefault = true
+        isBottomTextDefault = true
+        shareButton.isEnabled = false
     }
 }
 
