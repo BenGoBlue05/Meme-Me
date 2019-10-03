@@ -163,6 +163,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
+        activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
+                if success {
+                    self.save(image)
+                }
+        }
+    }
+    
+    func save(_ memeImage: UIImage) {
+        let meme = Meme(topText: topTf.text ?? "", bottomText: bottomTf.text ?? "", originalImage: imageView.image!, memeImage: memeImage)
     }
     
     
