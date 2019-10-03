@@ -37,6 +37,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let memeTextAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.strokeColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedString.Key.strokeWidth:  Float(-2)
+        ]
+        topTf.defaultTextAttributes = memeTextAttributes
+        bottomTf.defaultTextAttributes = memeTextAttributes
+        
         topTf.delegate = self
         bottomTf.delegate = self
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
