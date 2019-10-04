@@ -29,8 +29,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     private var isBottomTextDefault = true
     
-    private var bottomTfHasFocus = false
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
@@ -42,11 +40,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSAttributedString.Key.strokeColor: UIColor.black,
             NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedString.Key.strokeWidth:  Float(-2)
+            NSAttributedString.Key.strokeWidth:  Float(-2),
         ]
         topTf.defaultTextAttributes = memeTextAttributes
         bottomTf.defaultTextAttributes = memeTextAttributes
-        
+        topTf.textAlignment = NSTextAlignment.center
+        bottomTf.textAlignment = NSTextAlignment.center
         topTf.delegate = self
         bottomTf.delegate = self
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -59,17 +58,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func pickImageFromAlbum(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true)
+        getImage(.photoLibrary)
     }
     
-    
     @IBAction func getImageFromCamera(_ sender: Any) {
+        getImage(.camera)
+    }
+    
+    func getImage(_ sourceType: UIImagePickerController.SourceType) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
-        pickerController.sourceType = .camera
+        pickerController.sourceType = sourceType
         present(pickerController, animated: true)
     }
     
@@ -91,7 +90,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillShow(_ notification: Notification){
-        if bottomTfHasFocus {
+        if bottomTf.isFirstResponder {
             view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
@@ -103,7 +102,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
        
     @objc func keyboardWillHide(_ notification: Notification) {
-        bottomTfHasFocus = false
         view.frame.origin.y = 0
     }
 
@@ -125,7 +123,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 isBottomTextDefault = false
                 textField.text = ""
             }
-            bottomTfHasFocus = true
         }
         return true
     }
