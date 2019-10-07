@@ -34,9 +34,5 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewWillAppear(animated)
         memesTableView?.reloadData()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
 }

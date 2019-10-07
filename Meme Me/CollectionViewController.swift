@@ -17,10 +17,6 @@ class CollectionViewController: UICollectionViewController {
         memeCollectionView?.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return MmSession.sharedInstance.memes.count
     }

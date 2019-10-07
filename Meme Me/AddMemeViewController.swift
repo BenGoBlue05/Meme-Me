@@ -44,14 +44,16 @@ class AddMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
             NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSAttributedString.Key.strokeWidth:  Float(-2),
         ]
-        topTf.defaultTextAttributes = memeTextAttributes
-        bottomTf.defaultTextAttributes = memeTextAttributes
-        topTf.textAlignment = NSTextAlignment.center
-        bottomTf.textAlignment = NSTextAlignment.center
-        topTf.delegate = self
-        bottomTf.delegate = self
+        configureTextfield(bottomTf, memeTextAttributes)
+        configureTextfield(topTf, memeTextAttributes)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = imageView.image != nil
+    }
+    
+    func configureTextfield(_ textfield: UITextField, _ attrs: [NSAttributedString.Key: Any]) {
+        textfield.defaultTextAttributes = attrs
+        textfield.textAlignment = NSTextAlignment.center
+        textfield.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
