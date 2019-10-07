@@ -32,9 +32,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
         memesTableView?.reloadData()
-    
     }
     
     override func viewDidLoad() {

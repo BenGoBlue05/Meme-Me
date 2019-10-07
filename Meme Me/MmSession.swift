@@ -14,7 +14,6 @@ class MmSession {
     
     static let sharedInstance: MmSession = {
         let instance = MmSession()
-        // setup code
         return instance
     }()
 }

@@ -18,6 +18,7 @@
 		CE9DEF4B234AAE57001152A4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DEF4A234AAE57001152A4 /* TableViewController.swift */; };
 		CE9DEF4D234AAE96001152A4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DEF4C234AAE96001152A4 /* CollectionViewController.swift */; };
 		CE9DEF4F234B84C2001152A4 /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DEF4E234B84C2001152A4 /* MemeDetailViewController.swift */; };
+		CE9DEF51234B970D001152A4 /* MemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DEF50234B970D001152A4 /* MemeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CE9DEF4A234AAE57001152A4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		CE9DEF4C234AAE96001152A4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		CE9DEF4E234B84C2001152A4 /* MemeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
+		CE9DEF50234B970D001152A4 /* MemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				CE9DEF2423467FAF001152A4 /* Meme.swift */,
 				CE9DEF48234AAD50001152A4 /* MmSession.swift */,
 				CE9DEF4E234B84C2001152A4 /* MemeDetailViewController.swift */,
+				CE9DEF50234B970D001152A4 /* MemeCollectionViewCell.swift */,
 			);
 			path = "Meme Me";
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				CE9DEF1523450356001152A4 /* AddMemeViewController.swift in Sources */,
 				CE9DEF4B234AAE57001152A4 /* TableViewController.swift in Sources */,
 				CE9DEF2523467FAF001152A4 /* Meme.swift in Sources */,
+				CE9DEF51234B970D001152A4 /* MemeCollectionViewCell.swift in Sources */,
 				CE9DEF1123450356001152A4 /* AppDelegate.swift in Sources */,
 				CE9DEF4D234AAE96001152A4 /* CollectionViewController.swift in Sources */,
 				CE9DEF1323450356001152A4 /* SceneDelegate.swift in Sources */,
