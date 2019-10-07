@@ -214,6 +214,35 @@
             </objects>
             <point key="canvasLocation" x="713.04347826086962" y="-495.53571428571428"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="lgZ-6H-mSW">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="cvd-bF-DCZ" customClass="MemeDetailViewController" customModule="Meme_Me" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8qF-OL-hjg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="riT-98-yqp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="riT-98-yqp" firstAttribute="leading" secondItem="PgO-HW-Fap" secondAttribute="leading" id="N0x-h6-Vu0"/>
+                            <constraint firstItem="PgO-HW-Fap" firstAttribute="bottom" secondItem="riT-98-yqp" secondAttribute="bottom" id="OSx-tr-yeI"/>
+                            <constraint firstItem="riT-98-yqp" firstAttribute="top" secondItem="PgO-HW-Fap" secondAttribute="top" id="WJG-6Q-HtG"/>
+                            <constraint firstItem="PgO-HW-Fap" firstAttribute="trailing" secondItem="riT-98-yqp" secondAttribute="trailing" id="mCA-K7-7dk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PgO-HW-Fap"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="riT-98-yqp" id="zIK-gh-Ph4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="93z-AW-fU1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1646" y="-749"/>
+        </scene>
         <!--List-->
         <scene sceneID="nTH-de-jSZ">
             <objects>

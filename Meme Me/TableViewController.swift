@@ -24,6 +24,12 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = storyboard!.instantiateViewController(identifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailViewController.meme = MmSession.sharedInstance.memes[indexPath.row]
+        navigationController!.pushViewController(detailViewController, animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -33,7 +39,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
     }
 
 }
