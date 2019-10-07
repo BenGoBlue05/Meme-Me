@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UITextFieldDelegate {
+class AddMemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,  UITextFieldDelegate {
 
     
     @IBOutlet weak var topToolbar: UIToolbar!
@@ -31,11 +31,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated:false)
         subscribeToKeyboardNotifications()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let memeTextAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.strokeColor: UIColor.black,
             NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -169,6 +170,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func save(_ memeImage: UIImage) {
         let meme = Meme(topText: topTf.text ?? "", bottomText: bottomTf.text ?? "", originalImage: imageView.image!, memeImage: memeImage)
+        MmSession.sharedInstance.memes.append(meme)
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -179,6 +182,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         isTopTextDefault = true
         isBottomTextDefault = true
         shareButton.isEnabled = false
+        navigationController?.popViewController(animated: true)
     }
 }
 
